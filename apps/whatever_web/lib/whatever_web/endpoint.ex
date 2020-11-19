@@ -6,8 +6,8 @@ defmodule WhateverWeb.Endpoint do
   # Set :encryption_salt if you would also like to encrypt it.
   @session_options [
     store: :cookie,
-    key: "_whatever_web_key",
-    signing_salt: "dDQwNUwO"
+    key: "_whatever_key",
+    signing_salt: "7jwMPcSQ"
   ]
 
   socket "/socket", WhateverWeb.UserSocket,
@@ -30,7 +30,7 @@ defmodule WhateverWeb.Endpoint do
   # :code_reloader configuration of your endpoint.
   if code_reloading? do
     plug Phoenix.CodeReloader
-    plug Phoenix.Ecto.CheckRepoStatus, otp_app: :whatever_web
+    plug Phoenix.Ecto.CheckRepoStatus, otp_app: :whatever
   end
 
   plug Phoenix.LiveDashboard.RequestLogger,
@@ -48,5 +48,6 @@ defmodule WhateverWeb.Endpoint do
   plug Plug.MethodOverride
   plug Plug.Head
   plug Plug.Session, @session_options
+  plug CORSPlug, origin: ["http://localhost:4200"]
   plug WhateverWeb.Router
 end

@@ -20,5 +20,5 @@ defmodule WhateverWeb.Gettext do
 
   See the [Gettext Docs](https://hexdocs.pm/gettext) for detailed usage.
   """
-  use Gettext, otp_app: :whatever_web
+  use Gettext, otp_app: :whatever
 end
