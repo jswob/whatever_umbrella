@@ -1,11 +1,17 @@
-# Script for populating the database. You can run it as:
-#
-#     mix run priv/repo/seeds.exs
-#
-# Inside the script, you can read and write to any of your
-# repositories directly:
-#
-#     Whatever.Repo.insert!(%Whatever.SomeSchema{})
-#
-# We recommend using the bang functions (`insert!`, `update!`
-# and so on) as they will fail if something goes wrong.
+alias Whatever.Repo
+alias Whatever.Types.Type
+
+%Type{
+  name: "web-search"
+}
+|> Repo.insert!()
+
+%Type{
+  name: "songs"
+}
+|> Repo.insert!()
+
+%Type{
+  name: "food"
+}
+|> Repo.insert!()
