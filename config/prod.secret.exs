@@ -30,12 +30,10 @@ config :whatever_web, WhateverWeb.Endpoint,
   ],
   secret_key_base: secret_key_base
 
-# ## Using releases (Elixir v1.9+)
-#
-# If you are doing OTP releases, you need to instruct Phoenix
-# to start each relevant endpoint:
-#
-#     config :whatever_web, WhateverWeb.Endpoint, server: true
-#
-# Then you can assemble a release by calling `mix release`.
-# See `mix help release` for more information.
+wolfram_app_id =
+  System.get_env("WOLFRAM_APP_ID") ||
+    raise """
+    environment variable WOLFRAM_APP_ID is missing
+    """
+
+config :database_socket, :wolfram, app_id: wolfram_app_id
