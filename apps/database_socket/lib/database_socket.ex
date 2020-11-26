@@ -9,7 +9,7 @@ defmodule DatabaseSocket do
 
   def compute(query, opts \\ []) do
     timeout = opts[:timeout] || 10_000
-    opts = Keyword.put(opts, :limit, opts[:limit] || 10)
+    opts = Keyword.put_new(opts, :limit, 10)
     data_types = opts[:data_types] || Types.list_types()
 
     backends =
