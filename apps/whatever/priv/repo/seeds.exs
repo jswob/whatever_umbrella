@@ -2,6 +2,6 @@ alias Whatever.Repo
 alias Whatever.Types.Type
 
 %Type{
-  name: "science"
+  name: "wolfram"
 }
 |> Repo.insert!()
