@@ -24,6 +24,19 @@ defmodule Whatever.TypesTest do
       assert Types.list_types() == [type]
     end
 
+    test "filter_types/0 reutrns only selected types" do
+      type_name = "test"
+      type_fixture(%{name: type_name})
+      type_fixture()
+
+      params = [type_name]
+
+      result = Types.filter_types(params)
+
+      assert [%Type{name: ^type_name}] = result
+      assert 1 == Enum.count(result)
+    end
+
     test "get_type!/1 returns the type with given id" do
       type = type_fixture()
       assert Types.get_type!(type.id) == type
