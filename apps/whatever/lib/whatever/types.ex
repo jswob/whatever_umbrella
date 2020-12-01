@@ -22,6 +22,24 @@ defmodule Whatever.Types do
   end
 
   @doc """
+    Returns types filtered by Enum with names
+
+    ## Examples
+
+    iex> filter_types(["wolfram", "google_maps"])
+    [%Type{name: "wolfram"}, %Type{name: "google_maps"}]
+
+  """
+
+  def filter_types(params \\ []) do
+    types = list_types()
+
+    Enum.filter(types, fn %Type{name: type_name} ->
+      Enum.find(params, false, fn param_name -> type_name == param_name end)
+    end)
+  end
+
+  @doc """
   Gets a single type.
 
   Raises `Ecto.NoResultsError` if the Type does not exist.
